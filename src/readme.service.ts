@@ -4,7 +4,8 @@ import { markdown } from 'markdown';
 import { config } from '../config';
 
 const { githubReadmeBaseUrl } = config;
-export class ReadmeServer {
+
+export class ReadmeService {
  private readmeData: any;
  private repoInfo: RepoInfo;
  private gitHubDataAccess: GitHubDataAccess;
