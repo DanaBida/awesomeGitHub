@@ -1,6 +1,9 @@
-import { RepoInfo } from './types';
-import { GitHubDataAccess } from './githubDA';
+import { RepoInfo, Library } from './types';
+import { GitHubDataAccess } from './apiRequest';
 import { markdown } from 'markdown';
+import { config } from '../config';
+
+const { githubReadmeBaseUrl } = config;
 export class ReadmeServer {
  private readmeData: any;
  private repoInfo: RepoInfo;
@@ -12,28 +15,27 @@ export class ReadmeServer {
   return this.init() as any;
  }
 
- async init() {
+ private async init() {
   const { owner, name } = this.repoInfo;
-  const reqUrl = `${owner}/${name}/master/README.md`;
-  const readMeTextContent = await this.gitHubDataAccess.apiRequest(reqUrl);
+  const reqUrl = `${githubReadmeBaseUrl}/${owner}/${name}/master/README.md`;
+  const readMeTextContent = await this.gitHubDataAccess.apiRequest(reqUrl, false);
   this.readmeData = markdown.parse(readMeTextContent);
   return this;
  }
 
- getReadmeLibraries = (): RepoInfo[] => {
-  const repos: RepoInfo[] = [];
+ getReadmeRefsLibraries = (): Library[] => {
+  const libraries: Library[] = [];
 
   this.readmeData.forEach(element => {
    if (Array.isArray(element)) {
     element.forEach(subElem => {
      if (this.isElementGitHubRepoLink(subElem, this.repoInfo.name)) {
-      const elemRef = subElem[1].href;
-      repos.push(this.getRepoInfoFromLink(elemRef));
+      libraries.push(this.getLibraryInfoFromLinkElem(subElem));
      }
     });
    }
   });
-  return repos;
+  return libraries;
  };
 
  private isElementGitHubRepoLink = (elem, currRepoName) => {
@@ -44,11 +46,15 @@ export class ReadmeServer {
   );
  };
 
- private getRepoInfoFromLink = (link): RepoInfo => {
+ private getLibraryInfoFromLinkElem = (linkElem): Library => {
+  const link = linkElem[1].href;
   const linkParts = link.split('/');
+
   return {
-   name: linkParts[3],
-   owner: linkParts[4],
+   owner: linkParts[3],
+   name: linkParts[4],
+   link,
+   description: 'not implemented',
   };
  };
 }

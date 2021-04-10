@@ -190,6 +190,11 @@ error-ex@^1.2.0:
   dependencies:
     is-arrayish "^0.2.1"
 
+fetch-rate-limit-util@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/fetch-rate-limit-util/-/fetch-rate-limit-util-1.1.4.tgz#7fe17d15755c947b6f208e3b99fcd4116b32d7db"
+  integrity sha512-47lVuIOPTR3jNyCoJ28eIa3IcnFHnlahINLh2uGCpvqbV0BQZu0gMlikRk1dDn0tKuW1KMb4exjHZ5AkV7LfkQ==
+
 fill-range@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"

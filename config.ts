@@ -1,3 +1,4 @@
 export const config = {
- githubUrl: 'https://raw.githubusercontent.com',
+ githubReadmeBaseUrl: 'https://raw.githubusercontent.com',
+ githubApiBaseUrl: 'https://api.github.com',
 };
