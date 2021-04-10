@@ -4,4 +4,6 @@ import { GitHubDataAccess } from './githubDA';
 export const startProgram = async repoInfo => {
  const gitHubDataAccess = new GitHubDataAccess(repoInfo.token);
  const readmeServer = await new ReadmeServer(repoInfo, gitHubDataAccess);
+ const libraries = readmeServer.getReadmeLibraries();
+ console.log('libraries: ', libraries);
 };

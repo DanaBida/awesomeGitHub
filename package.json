@@ -21,12 +21,11 @@
  },
  "homepage": "https://github.com/DanaBida/awesomeGitHub#readme",
  "dependencies": {
-  "body-parser": "^1.19.0",
-  "express": "^4.17.1",
+  "markdown": "^0.5.0",
   "node-fetch": "^2.6.1",
+  "rimraf": "2.6.3",
   "typescript": "^4.2.3",
-  "yargs": "13.3.0",
-  "rimraf": "2.6.3"
+  "yargs": "13.3.0"
  },
  "devDependencies": {
   "@types/node": "^14.14.37",
