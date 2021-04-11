@@ -3,7 +3,6 @@ export interface RepoInfo {
  name: string;
  token?: string;
 }
-
 export interface Library {
  owner: string;
  name: string;
@@ -17,7 +16,6 @@ export interface Library {
   node_id: string;
  };
 }
-
 export interface LibraryInfo {
  library: Library;
  numberOfStars: number;
@@ -30,7 +28,6 @@ export interface LibraryInfo {
  licenseType?: string;
  numberOfForks: number;
 }
-
 export interface LibrariesArraysObj {
  [LibraryInfoFields.NUMBER_OF_STARS]: number[];
  [LibraryInfoFields.DATE_OF_LAST_ISSUE]: string[];
@@ -53,14 +50,12 @@ export enum LibraryInfoFields {
  LICENSE_TYPE = 'licenseType',
  NUMBER_OF_FORKS = 'numberOfForks',
 }
-
 export interface AdditionalInfo {
  issues: any[];
  pullRequests: any[];
  releases: any[];
  contributors: any[];
 }
-
 export interface LibraryPrintObj {
  awesomenessScore: number;
  description: string;
